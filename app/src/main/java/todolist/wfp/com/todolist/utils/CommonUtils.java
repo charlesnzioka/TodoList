@@ -16,10 +16,6 @@
 
 package todolist.wfp.com.todolist.utils;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-
-import android.provider.Settings;
 import android.util.Patterns;
 
 public final class CommonUtils {
@@ -28,9 +24,12 @@ public final class CommonUtils {
         // This utility class is not publicly instantiable
     }
 
-    @SuppressLint("all")
-    public static String getDeviceId(Context context) {
-        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+    public static String usernameFromEmail(String email) {
+        if (email.contains("@")) {
+            return email.split("@")[0];
+        } else {
+            return email;
+        }
     }
 
 

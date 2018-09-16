@@ -1,7 +1,7 @@
 package todolist.wfp.com.todolist;
 
 import android.app.Activity;
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ import todolist.wfp.com.todolist.di.component.DaggerAppComponent;
 import todolist.wfp.com.todolist.utils.AppLogger;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
-public class TodoListApp extends Application implements HasActivityInjector {
+public class TodoListApp extends MultiDexApplication implements HasActivityInjector {
     @Inject
     DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
 
