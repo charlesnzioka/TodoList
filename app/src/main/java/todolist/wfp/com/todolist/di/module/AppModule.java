@@ -5,6 +5,10 @@ import android.app.Application;
 import android.content.Context;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -47,6 +51,18 @@ public class AppModule {
     @Singleton
     DataManager provideDataManager(AppDataManager appDataManager) {
         return appDataManager;
+    }
+
+    @Provides
+    @Singleton
+    DatabaseReference provideAppDatabase() {
+        return FirebaseDatabase.getInstance().getReference();
+    }
+
+    @Provides
+    @Singleton
+    FirebaseAuth provideAppAuthentication() {
+        return FirebaseAuth.getInstance();
     }
 
 }
