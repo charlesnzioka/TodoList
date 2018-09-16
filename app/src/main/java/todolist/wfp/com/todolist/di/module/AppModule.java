@@ -4,7 +4,6 @@ package todolist.wfp.com.todolist.di.module;
 import android.app.Application;
 import android.content.Context;
 
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -18,7 +17,6 @@ import todolist.wfp.com.todolist.data.AppDataManager;
 import todolist.wfp.com.todolist.data.DataManager;
 import todolist.wfp.com.todolist.data.remote.ApiHelper;
 import todolist.wfp.com.todolist.data.remote.AppApiHelper;
-import todolist.wfp.com.todolist.di.ApiInfo;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 @Module
@@ -56,6 +54,7 @@ public class AppModule {
     @Provides
     @Singleton
     DatabaseReference provideAppDatabase() {
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         return FirebaseDatabase.getInstance().getReference();
     }
 

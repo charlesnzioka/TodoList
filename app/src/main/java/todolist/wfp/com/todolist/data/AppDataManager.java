@@ -4,8 +4,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import todolist.wfp.com.todolist.data.model.api.Todo;
 import todolist.wfp.com.todolist.data.remote.ApiHelper;
 
 public class AppDataManager implements DataManager {
@@ -34,5 +37,15 @@ public class AppDataManager implements DataManager {
     @Override
     public Task<AuthResult> signUpUser(String userName, String password) {
         return mApiHelper.signUpUser(userName, password);
+    }
+
+    @Override
+    public void addNewTodoItem(String todoItemText) {
+        mApiHelper.addNewTodoItem(todoItemText);
+    }
+
+    @Override
+    public List<Todo> fetchAllTodos() {
+        return mApiHelper.fetchAllTodos();
     }
 }

@@ -12,6 +12,30 @@ public class Todo {
     public String name;
     public String postDate;
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(String postDate) {
+        this.postDate = postDate;
+    }
+
     public Todo() {
         // Default constructor required for calls to DataSnapshot.getValue(Todo.class)
     }

@@ -3,8 +3,10 @@ package todolist.wfp.com.todolist.ui.todo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -14,6 +16,8 @@ import todolist.wfp.com.todolist.databinding.ActivityTodoBinding;
 import todolist.wfp.com.todolist.ui.base.BaseActivity;
 
 public class TodoActivity extends BaseActivity<ActivityTodoBinding, TodoViewModel> implements TodoNavigator {
+
+    AlertDialog addNewTodoDialog = null;
     @Inject
     TodoAdapter mTodoAdapter;
 
@@ -37,6 +41,7 @@ public class TodoActivity extends BaseActivity<ActivityTodoBinding, TodoViewMode
         mActivityTodoBinding = getViewDataBinding();
         mTodoViewModel.setNavigator(this);
         setUp();
+        subscribeToLiveData();
     }
 
 
@@ -65,6 +70,15 @@ public class TodoActivity extends BaseActivity<ActivityTodoBinding, TodoViewMode
 
     @Override
     public void addNewTodo() {
+        String toDoItemText = mActivityTodoBinding.newTodoItem.getText().toString();
+        if (toDoItemText != null && toDoItemText.length() > 6) {
+            mTodoViewModel.addNewTodoItem(toDoItemText);
+        } else {
+            Toast.makeText(this, "Please input a valid Todo item text", Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    private void subscribeToLiveData() {
+        mTodoViewModel.getTodoListLiveData().observe(this, todos -> mTodoViewModel.addTodoItemsToList(todos));
     }
 }

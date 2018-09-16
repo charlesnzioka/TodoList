@@ -14,4 +14,7 @@
     <string name="empty_screen">We do not have any\n Todo items right now.</string>
     <string name="please_retry">Please Retry</string>
     <string name="retry">Retry</string>
+
+    <!--Add New Todo Item -->
+    <string name="add_new_todo">Add Todo Item</string>
 </resources>
