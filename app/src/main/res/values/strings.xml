@@ -9,4 +9,9 @@
     <string name="signup">Sign Up</string>
     <!--Login Validation-->
     <string name="invalid_username_password">Please provide a valid user name and password.</string>
+
+    <!--empty state-->
+    <string name="empty_screen">We do not have any\n Todo items right now.</string>
+    <string name="please_retry">Please Retry</string>
+    <string name="retry">Retry</string>
 </resources>
