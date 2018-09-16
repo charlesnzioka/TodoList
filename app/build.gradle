@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "todolist.wfp.com.todolist"
-        minSdkVersion 14
-        targetSdkVersion 27
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,13 +21,30 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'com.android.support:design:27.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.google.firebase:firebase-core:16.0.3'
-    implementation 'com.google.firebase:firebase-database:16.0.1'
-    implementation 'com.google.firebase:firebase-auth:16.0.1'
+    //android support libraries
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+
+    //Constraint layout
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+
+    // UI Testing
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+
+    //firebase
+    implementation "com.google.firebase:firebase-core:$rootProject.firebaseCoreVersion"
+    implementation "com.google.firebase:firebase-database:$rootProject.firebaseVersion"
+    implementation "com.google.firebase:firebase-auth:$rootProject.firebaseVersion"
+
+    // view model
+    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
 }
