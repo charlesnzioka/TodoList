@@ -38,6 +38,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:onClick="@{() -> viewModel.onFabAddTodoClick()}"
+            android:src="@android:drawable/ic_input_add" />
     </FrameLayout>
 
 </layout>

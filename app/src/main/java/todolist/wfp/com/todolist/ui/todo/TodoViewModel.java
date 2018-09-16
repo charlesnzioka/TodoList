@@ -17,4 +17,8 @@ public class TodoViewModel extends BaseViewModel<TodoActivity> {
     public ObservableList<Todo> getTodoObservableArrayList() {
         return todoObservableArrayList;
     }
+
+    public void onFabAddTodoClick() {
+        this.getNavigator().addNewTodo();
+    }
 }

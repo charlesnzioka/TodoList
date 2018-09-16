@@ -63,4 +63,8 @@ public class TodoActivity extends BaseActivity<ActivityTodoBinding, TodoViewMode
         mActivityTodoBinding.alarmRecyclerView.setAdapter(mTodoAdapter);
     }
 
+    @Override
+    public void addNewTodo() {
+
+    }
 }
