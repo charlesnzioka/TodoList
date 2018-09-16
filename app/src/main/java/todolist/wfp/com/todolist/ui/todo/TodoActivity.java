@@ -1,4 +1,4 @@
-package todolist.wfp.com.todolist;
+package todolist.wfp.com.todolist.ui.todo;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import todolist.wfp.com.todolist.R;
 
 public class TodoActivity extends AppCompatActivity {
 

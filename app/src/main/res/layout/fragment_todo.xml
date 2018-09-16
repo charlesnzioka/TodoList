@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TodoActivityFragment"
+    tools:context=".ui.todo.TodoActivityFragment"
     tools:showIn="@layout/activity_todo">
 
     <TextView
