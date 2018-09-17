@@ -36,7 +36,11 @@ public class TodoViewModel extends BaseViewModel<TodoActivity> {
 
     public void onFabAddTodoClick() {
         this.getNavigator().addNewTodo();
-        todoListLiveData.setValue(getDataManager().fetchAllTodos());
+        fetchAllTodos();
+    }
+
+    public void fetchAllTodos() {
+        getDataManager().fetchAllTodos();
     }
 
     public void addNewTodoItem(String todoItemText) {

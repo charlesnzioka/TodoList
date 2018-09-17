@@ -7,6 +7,8 @@ import android.content.Context;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
 
 import javax.inject.Singleton;
 
@@ -62,6 +64,12 @@ public class AppModule {
     @Singleton
     FirebaseAuth provideAppAuthentication() {
         return FirebaseAuth.getInstance();
+    }
+
+    @Provides
+    @Singleton
+    Bus provideOttoBus() {
+        return new Bus(ThreadEnforcer.ANY);
     }
 
 }

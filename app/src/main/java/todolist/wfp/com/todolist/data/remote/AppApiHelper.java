@@ -12,6 +12,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +23,7 @@ import javax.inject.Singleton;
 
 import todolist.wfp.com.todolist.data.model.api.Todo;
 import todolist.wfp.com.todolist.data.model.api.User;
+import todolist.wfp.com.todolist.data.model.events.TodosLoadedEvent;
 
 
 @Singleton
@@ -31,10 +33,13 @@ public class AppApiHelper implements ApiHelper {
 
     private FirebaseAuth mFirebaseAuth;
 
+    private Bus mBus;
+
     @Inject
-    public AppApiHelper(DatabaseReference firebaseDatabase, FirebaseAuth firebaseAuth) {
+    public AppApiHelper(DatabaseReference firebaseDatabase, FirebaseAuth firebaseAuth, Bus bus) {
         mFirebaseDatabase = firebaseDatabase;
         mFirebaseAuth = firebaseAuth;
+        mBus = bus;
     }
 
     @Override
@@ -81,6 +86,7 @@ public class AppApiHelper implements ApiHelper {
                         for (DataSnapshot data : dataSnapshot.getChildren()) {
                             Todo todo = data.getValue(Todo.class);
                             result.add(todo);
+                            mBus.post(new TodosLoadedEvent(result));
                         }
                     }
 

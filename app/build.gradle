@@ -71,4 +71,7 @@ dependencies {
 
     // font
     implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
+
+    //Otto
+    implementation "com.squareup:otto:$rootProject.ottoVersion"
 }
