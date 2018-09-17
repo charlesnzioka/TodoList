@@ -88,6 +88,7 @@ public class TodoActivity extends BaseActivity<ActivityTodoBinding, TodoViewMode
         if (toDoItemText != null && toDoItemText.length() > 6) {
             mTodoViewModel.addNewTodoItem(toDoItemText);
             mActivityTodoBinding.newTodoItem.setText("");
+            hideKeyboard();
         } else {
             Toast.makeText(this, "Please input a valid Todo item text", Toast.LENGTH_SHORT).show();
         }
